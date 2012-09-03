@@ -1,0 +1,17 @@
+﻿{% extends "base1.html" %}
+
+{% block titulo %}DERECHOS DE LOS MEDICOS{% endblock %}
+{% block style_css %}
+  <link href='http://fonts.googleapis.com/css?family=Simonetta' rel='stylesheet' type='text/css'>
+{% endblock %}
+{% block contenido %}
+  <br>
+  <h1 style="text-align:center;">INFORMES INTERNOS</h1>
+  <br>
+  <div id="informes" style="margin:0 auto 0 auto; width:500px; height:200px;">
+    <a href="{{STATIC_URL}}pdf/INFORME INTERNO ENERO-MARZO 2012.pdf"><img style=' float:left; margin-right:30px; ' src='{{STATIC_URL}}img/boletin1.jpg'  /></a>
+    <a href="{{STATIC_URL}}pdf/INFORME INTERNO ABRIL-JUNIO 2012(HMS).pdf"><img src='{{STATIC_URL}}img/boletin2.jpg'  /></a>
+  </div>
+  <br>
+  <br>
+{% endblock %}

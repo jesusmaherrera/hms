@@ -1,0 +1,34 @@
+﻿{% extends "base.html" %}
+
+{% block headScripts %}
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#slider").easySlider({auto: true,
+        auto:true,
+        continuous: true,
+        numeric: true
+      });
+    });
+  </script>
+{% endblock %}
+
+{% block title %}MEDICA SIERRA{% endblock %}
+
+{% block content %}
+  <div id="container">
+      <!--<div id="header">
+        <h1>HOSPITAL MÉDICA SIERRA</h1>
+      </div>	-->
+    <div id="content">
+      <div id="slider">
+        <ul>
+          <li><a href="http://templatica.com/preview/7"><img src="{{ MEDIA_URL }}media/img/cuarto1.jpg" alt="Css Template Preview" /></a></li>
+          <li><a href="http://templatica.com/preview/25"><img src="{{ MEDIA_URL }}media/img/cuadros1.jpg" alt="Css Template Preview" /></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<p>Hospital Medica Sierra, S.A. de C.V.{{ numero }}.</p>
+{% endblock %}
+

@@ -1,0 +1,44 @@
+﻿{% extends "base1.html" %}
+
+{% block titulo %}INICIO{% endblock %}
+
+{% block style_css %}
+  <link href='{{STATIC_URL}}css/screen.css' rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block js_code %}
+  <script type="text/javascript" src='{{STATIC_URL}}js/easySlider1.7.js'></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#slider").easySlider({auto: true,
+        auto:true,
+        continuous: true,
+        numeric: true,
+        speed: 1600,
+        pause: 10000,
+      });
+    });
+  </script>
+{% endblock %}
+
+{% block contenido %}
+<br>
+<div id="container" style='display: block; margin: auto;' >
+    <div id="content">
+      <div id="slider">
+        <ul>
+          <li><a href="#"><img src='{{STATIC_URL}}img/conoceTusDerechos.jpg' /></a></li>
+          <li><a href="/informes/"><img src='{{STATIC_URL}}img/boletines.png' /></a></li>
+          <li><a href="#"><img src='{{STATIC_URL}}img/cuarto1.jpg' /></a></li>
+          <li><a href="#"><img src='{{STATIC_URL}}img/hms.jpg' /></a></li>
+          <li><a href="#"><img src='{{STATIC_URL}}img/cuarto2.jpg' /></a></li>
+          <li><a href="#"><img src='{{STATIC_URL}}img/hms2.jpg' /></a></li>
+          <li><a href="#"><img src='{{STATIC_URL}}img/hms3.jpg'/></a></li>
+          <li><a href="#"><img src='{{STATIC_URL}}img/hms4.jpg' /></a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <br>
+
+{% endblock %}

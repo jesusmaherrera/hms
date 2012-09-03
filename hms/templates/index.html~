@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}HISTORIA{% endblock %}
+{% block content %}
+<p>Bienvenido esta es la pagina numero {{ current_date }}.</p>
+{% endblock %}
+
+

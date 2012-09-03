@@ -1,0 +1,41 @@
+{% extends "base1.html" %}
+
+{% block titulo %}SERVICIOS{% endblock %}
+{% block style_css %}
+
+{% endblock %}
+{% block contenido %}
+<article id="servicios" style="display: block;
+      margin: 0 auto 0 auto; width:600px; ">
+  <header>
+    <br>
+    <br>
+    <h1>Directorio Medico</h1>
+  </header>
+  <!-- <section>
+    {% if especialidades %}
+    Selecciona una especialidad: 
+    <select>
+      {% for especialidad in especialidades %}
+        <option value="especialidad.specialty">{{especialidad.specialty}}</option>
+      {% endfor %}
+    </select>
+    {% else %}
+      <p>No hay Especialidades</p>
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </section> -->
+  <div id="searchBoxOne">
+    <form action="?" method="get">
+      <input type="text" placeholder="Especialidad, Nombre de Medico, Apellidos de Medico " style="width: 30em;" />
+      <input type="submit" value="Buscar"  />
+    </form>
+  </div>
+  <br>
+  <br>
+</article>
+{% endblock %}

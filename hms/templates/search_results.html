@@ -1,0 +1,11 @@
+<p></p>
+{% if doctores %}
+    <p>Encontrados {{ doctores|length }} Doctor{{ doctores|pluralize }}.</p>
+    <ul>
+        {% for doctor in doctores %}
+        <li>{{ doctor.first_name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay doctores.</p>
+{% endif %}

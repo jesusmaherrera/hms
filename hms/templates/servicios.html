@@ -1,0 +1,42 @@
+﻿{% extends "base1.html" %}
+
+{% block titulo %}SERVICIOS{% endblock %}
+{% block style_css %}
+<link href='http://fonts.googleapis.com/css?family=Eagle+Lake' rel='stylesheet' type='text/css'>
+{% endblock %}
+{% block contenido %}
+<article id="servicios" style="display: block;
+      margin: 0 auto 0 auto; width:600px; ">
+  <header>
+    <h1>Nuestros Servicios</h1>
+  </header>
+  <section>
+    <img style=" margin-right:30px;" align="left"; src='{{STATIC_URL}}img/serviciosLeft.png' alt="SERVICIOS" />
+    <ul style="width:700px; ">
+      <li>Laboratorio de Analisis Clinico</li>
+      <li>Rayo X</li>
+      <li>Tomografia</li>
+      <li>Sonografia</li>
+      <li>Unidad de Cuidados Intensivos</li>
+      <li>Ciruguia Ambulatoria</li>
+      <li>Ciruguia Laparoscopica</li>
+      <li>Cirugia Estetica</li>
+      <li>Cirugia Genaral</li>
+      <li>Electrocardiografia</li>
+      <li>Ginecobstetricia</li>
+      <li>Pediatria</li>
+      <li>Urologia</li>
+      <li>Otorrinolaringologia</li>
+      <li>Medicina Interna</li>
+      <li>Neurologia</li>
+      <li>Ortopedia</li>
+      <li>Angiologia</li>
+      <li>Anestesiologia</li>
+      <li>Urgencias</li>
+      <li>Farmacia las 24 Hrs.</li>
+    </ul>
+  </section>
+</article>
+<br style="clear:both;">
+
+{% endblock %}

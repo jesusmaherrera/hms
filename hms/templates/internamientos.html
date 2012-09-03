@@ -1,0 +1,47 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}../media/base.css" />
+
+    <title>Reporte Internamientos</title>
+</head>
+<body>
+    <img  style="display:block;margin:0 auto 0 auto;"  src="{{ STATIC_URL }}../media/BANNER_HMSpequeña.jpg" alt="Hi!" height="13%" />
+    <p  ALIGN=right style="font-size:12px; margin:0 70px 0 0; padding:0 0 0 0;">
+       {{ fecha_actual|date:"d/m/Y" }}</p>
+    {% if intenamientosData %} 
+      <p ALIGN=center></p>
+      <ul>
+      <table border="1" class="altrowstable" id="alternatecolor">
+        <thead>
+          <tr> 
+            <td>FOLIO</td>
+ 	    <td>PACIENTE</td>
+	    <td>CUARTO</td>
+	    <td>IGRESO</td>
+	    <td>DIAS</td>
+	    <td>MÉDICO</td>
+	  <td>DIAGNOSTICO</td>
+	  <td>TIPO</td>
+	  <td>INSTITUCIÓN</td>
+          </tr>
+        </thead>
+      {% for internamiento in intenamientosData %}
+        <tr>
+          <td>{{ internamiento.folio }}</td>
+	  <td>{{ internamiento.paciante }}</td>
+	  <td>{{ internamiento.Cuarto }}</td>
+	  <td>{{ internamiento.dateTime }}</td>
+	  <td>{{ internamiento.diasEstancia }}</td>
+	  <td>{{ internamiento.medico }}</td>
+	  <td>{{ internamiento.disease }}</td>
+	  <td>{{ internamiento.patientType }}</td>
+	  <td>{{ internamiento.institution }}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    </ul>
+    {% else %}
+      <p>No hay internamientos</p>
+    {% endif %}
+</body>
+</html>

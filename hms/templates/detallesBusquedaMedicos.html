@@ -1,0 +1,34 @@
+{% extends "base1.html" %}
+
+{% block titulo %}SERVICIOS{% endblock %}
+{% block style_css %}{% endblock %}
+{% block contenido %}
+<article id="servicios" style="display: block;
+      margin: 0 auto 0 auto; width:600px; ">
+  <header>
+    <br>
+    <br>
+    <h1>Directorio Medico</h1>
+  </header>
+  <section>
+    {% if doctores %}
+      {% for doctor in doctores %}
+        <article>
+          <header>
+            {{ doctor.first_name }} {{ doctor.last_name}}
+          </header>
+          <section>
+            email {{ doctor.email }} <br>
+            Telefono de Oficina: {{ doctor.office_phones }}<br>
+            Especialidad: {{ doctor.specialty }}
+          </section>
+        </article>
+        <hr>
+      {% endfor %}
+    {% else %}
+      <p>No hay Medicos.</p>
+    {% endif %}
+  </section>
+</article>
+
+{% endblock %}

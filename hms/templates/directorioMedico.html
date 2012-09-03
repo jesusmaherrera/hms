@@ -1,0 +1,45 @@
+﻿{% extends "base1.html" %}
+
+{% block titulo %}SERVICIOS{% endblock %}
+{% block style_css %}
+
+{% endblock %}
+{% block contenido %}
+<article id="servicios" style="display: block;
+      margin: 0 auto 0 auto; width:600px; ">
+  <header>
+    <h1>Directorio Medico</h1>
+  </header>
+  
+  <div id="searchBoxOne">
+    <form action="/search/" method="GET">
+      <input type="text" placeholder="Especialidad, Nombre de Medico, Apellidos de Medico " style="width: 30em; height:2em; margin-bottom: 0;" name="query"/>
+      <button type="submit" class="btn btn-large ">Buscar</button>
+    </form>
+  </div>
+  <br>
+  <br>
+</article>
+{% if doctores %}
+  {% if query %}
+      {% for doctor in doctores %}
+        <article class="tarjetaMedico">
+          <header>
+            {{ doctor.first_name }} {{ doctor.last_name}} -  {{ doctor.specialty }}
+          </header>
+          <section>
+            <label>Email</label> {{ doctor.email }} 
+            <label>Telefono de Oficina:</label> {{ doctor.office_phones }}
+            <label>Nota:</label>{{doctor.description}}
+          </section>
+        </article>
+      {% endfor %}
+  {% else %}
+    {% if query %}
+      <p>No hay Medicos.</p>
+    {% endif %}
+  {% endif %}
+{% endif%}
+
+    <br><br><br>
+{% endblock %}

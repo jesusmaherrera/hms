@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>HOSPITAL MEDICA SIERRA - {% block titulo %}{% endblock %}</title>
+  <link rel='stylesheet' href='{{STATIC_URL}}css/bootstrap.min.css'/>
+  <link rel='shortcut icon' href='{{STATIC_URL}}img/icono.png'>
+  <link href='http://fonts.googleapis.com/css?family=Eagle+Lake' rel='stylesheet' type='text/css'>
+  <link rel='stylesheet' href='{{STATIC_URL}}css/base.css'/>
+  {% block style_css %}{% endblock %}
+  <script type='text/javascript' src='{{STATIC_URL}}js/bootstrap.min.js'></script>
+  <script type='text/javascript' src='{{STATIC_URL}}js/jquery.js'></script>
+  <script type='text/javascript'>
+    function my_js_callback(data){
+        alert(data.message);
+    }
+
+    $(document).ready(function(){
+    
+      $("#MenuNav li a").click(function(event){
+        $("#MenuNav li").removeClass("LinkMenuActivo");
+        $(this).parent().addClass("LinkMenuActivo");
+      });
+
+      function cargar(){
+          
+      }
+      
+
+
+    });
+  </script>
+
+  {% block js_code %}{% endblock %}
+</head>
+<body style="background-color:white;">
+  <br>
+  <div style="margin:0 auto 0  auto; width:1100px;">
+    <img  style='display:block;margin:0 200px 0 30px; float:left;' src='{{STATIC_URL}}img/bannerL1.png' />
+    <img  style='display:block;margin:0 auto 0 830px;' src='{{STATIC_URL}}img/bannerR.png' />
+  </div>
+  <header>
+    {% block encabezado%}{% endblock %}
+    <div >
+
+    <nav>
+      <ul id="MenuNav" style="z-index:600;">
+        <li><a href="/"><i class="icon-home icon-white"></i> Home</a></li>
+        <li><a href="/servicios/"><i class="icon-eye-open icon-white" ></i> Servicios</a></li>
+        <li><a href="/directorioMedico/"><i class="icon-user icon-white"></i> Directorio Medico</a></li>
+        <li><a href="/ubicacion/"> <i class="icon-screenshot icon-white"></i> Ubicacion</a></li>
+        <li><a href="#" title="Reportes"><i class="icon-calendar icon-white"></i> Derechos &nbsp;<span class="flechabot"/> </a>
+          <ul>
+            <li><a href="/derechosPacientes/">Derechos de los Pacientes</a></li>
+            <li><a href="/derechosPacientesAleman/">Die Rechte der Patienten</a></li>
+            <li><a href="/derechosMedicos/">Derechos de los Medicos</a></li>
+            <li><a href="/derechosEnfermeras/">Derechos de las Enfermeras</a></li>
+          </ul>
+        </li>
+        <li><a href="#" title="Reportes"><i class="icon-calendar icon-white"></i> Reportes&nbsp;<span class="flechabot"/></a>
+          <ul>
+            <li><a href="/internamientos/">Reporte de Internamientos</a></li>
+          </ul>
+        </li>
+        <li><a href="/admin/main/internamiento/">Internamientos</a></li>
+        <li><a href="/admin/main/contact/">Agenda</a></li>
+      </ul>
+    </nav>
+    </div>
+  </header>
+  <div style='background-color:#ededed;'>
+    <br style='height:.2em;'>
+    <section id='contenido' style='background-color:#ededed; display:block; margin: 0 auto 0 auto; width:1100px;'>
+    {% block contenido %}{% endblock %}
+    </section>
+  </div>
+  <div style='background-color:#e1e0e0;'>
+    <footer>
+      <br>
+      <h3>Derechos</h3>
+      <ul class="tres_columnas">
+        <li><a href="/derechosPacientes/">Derechos de los Pacientes</a></li>
+        <li>.</li>
+        <li>.</li>
+        <li><a href="/derechosMedicos/">Derechos de los Medicos</a></li>
+        <li>.</li>
+        <li>.</li>
+        <li><a href="/derechosPacientesAleman/">Die Rechte der Patienten</a></li>
+        <li>.</li>
+        <li>.</li>
+        <li><a href="/derechosEnfermeras/">Derechos de las Enfermeras</a></li>
+        <li>.</li>
+        <li>.</li>
+
+      </ul>
+      <div style="text-align:right; padding:0 20px 0 0;">2012 Hospital Medica Sierra. Todos los derechos reservados</div>
+      </br>
+    </footer>
+  </div>
+</body>
+</html>
