@@ -3,34 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <title>HOSPITAL MEDICA SIERRA - {% block titulo %}{% endblock %}</title>
-  <link rel='stylesheet' href='{{STATIC_URL}}css/bootstrap.min.css'/>
   <link rel='shortcut icon' href='{{STATIC_URL}}img/icono.png'>
+
+  <link rel='stylesheet' href='{{STATIC_URL}}css/bootstrap.css'/>
   <link href='http://fonts.googleapis.com/css?family=Eagle+Lake' rel='stylesheet' type='text/css'>
   <link rel='stylesheet' href='{{STATIC_URL}}css/base.css'/>
+  <link rel='stylesheet' href='{{STATIC_URL}}css/screen.css'/>
+
   {% block style_css %}{% endblock %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" ></script>
   <script type='text/javascript' src='{{STATIC_URL}}js/bootstrap.min.js'></script>
-  <script type='text/javascript' src='{{STATIC_URL}}js/jquery.js'></script>
-  <script type='text/javascript'>
-    function my_js_callback(data){
-        alert(data.message);
-    }
-
-    $(document).ready(function(){
-    
-      $("#MenuNav li a").click(function(event){
-        $("#MenuNav li").removeClass("LinkMenuActivo");
-        $(this).parent().addClass("LinkMenuActivo");
-      });
-
-      function cargar(){
-          
-      }
-      
-
-
-    });
-  </script>
-
+  
   {% block js_code %}{% endblock %}
 </head>
 <body style="background-color:white;">
@@ -42,7 +25,6 @@
   <header>
     {% block encabezado%}{% endblock %}
     <div >
-
     <nav>
       <ul id="MenuNav" style="z-index:600;">
         <li><a href="/"><i class="icon-home icon-white"></i> Home</a></li>
