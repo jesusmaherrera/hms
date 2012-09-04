@@ -1,0 +1,29 @@
+{% extends "base1.html" %}
+
+{% block titulo %}SERVICIOS{% endblock %}
+{% block style_css %}
+
+{% endblock %}
+{% block contenido %}
+<header>
+	<h1>Iniciar Sesión</h1>
+    <br>
+</header>
+<form id='formulario' action="/login/" method="post">{% csrf_token %}
+    {{ form.non_field_errors }}
+    <div >
+        {{ form.username.errors }}
+        <label for="id_username" placeholder="Usuario">Usuario:</label>
+        {{ form.username }}
+    </div>
+    <div >
+        {{ form.password.errors }}
+        <label for="id_password">Password:</label>
+        {{ form.password }}
+    </div>
+    <p style="color:red;">{{ message }}</p>
+    <br>
+    <input class="btn" type="submit" value="Ingresar" />
+</form>
+<br><br><br><br><br>	
+{% endblock %}

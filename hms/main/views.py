@@ -174,13 +174,46 @@ def subirDatos(request):
     return HttpResponse(insert_query)
 
 def search(request, query):
-  
   query = request.GET['query']
   contacts = 1
-  if query != "":
+  if query != "" :
     contacts = Contact.objects.filter(contact_type__name__icontains='MEDICO').filter(
                                                                                   Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(specialty__icontains=query) 
                                                                                   )
   context = {'doctores':contacts,'query': query}
   return render_to_response('directorioMedico.html', context, context_instance=RequestContext(request))
+
+def ingresar(request):
+    if not request.user.is_anonymous():
+        return HttpResponseRedirect('/directorioContactos/?query=')
+    if request.method == 'POST':
+        formulario = AuthenticationForm(request.POST)
+        if formulario.is_valid:
+            usuario = request.POST['username']
+            clave = request.POST['password']
+            acceso = authenticate(username=usuario, password=clave)
+            if acceso is not None:
+                if acceso.is_active:
+                    login(request, acceso)
+                    return HttpResponseRedirect('/directorioContactos/?query=')
+                else:
+                    return render_to_response('noactivo.html', context_instance=RequestContext(request))
+            else:
+                return render_to_response('login.html',{'form':formulario, 'message':'Nombre de usaurio o password no validos',}, context_instance=RequestContext(request))
+    else:
+        formulario = AuthenticationForm()
+    return render_to_response('login.html',{'form':formulario, 'message':'',}, context_instance=RequestContext(request))
+
+def logoutUser(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+@login_required(login_url='/login/')
+def searchContact(request, query):
+  query = request.GET['query']
+  contacts = 1
+  if query != "":
+    contacts = Contact.objects.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(specialty__icontains=query))
+  context = {'contacts':contacts,'query': query}
+  return render_to_response('agenda.html', context, context_instance=RequestContext(request))
 

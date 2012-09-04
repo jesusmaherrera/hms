@@ -1,0 +1,57 @@
+﻿{% extends "base1.html" %}
+
+{% block titulo %}SERVICIOS{% endblock %}
+{% block style_css %}
+
+{% endblock %}
+{% block contenido %}
+<article id="servicios" style="display: block;
+      margin: 0 auto 0 auto; width:600px; ">
+  <header>
+    <h1>Agenda</h1>
+  </header>
+  
+  <div id="searchBoxOne">
+    <form action="/directorioContactos/" method="GET">
+      <input type="text" placeholder="Especialidad, Nombre , Apellidos" style="width: 30em; height:2em; margin-bottom: 0;" name="query"/>
+      <button type="submit" class="btn btn-large ">Buscar</button>
+    </form>
+  </div>
+  <br>
+  <br>
+</article>
+<div id="listaMedicos">
+{% if contacts %}
+  {% if query %}
+      {% for contact in contacts %}
+        <article class="tarjetaMedico">
+          <header>
+            {{ contact.first_name }} {{ contact.last_name}} -  {{ contact.specialty }}
+          </header>
+          <section>
+            <div style="float:left;">
+              {% if contact.image %}
+              <img src='{{MEDIA_URL}}{{contact.image}}' style="height:80px; width: 80px; margin-top:.5em; margin-bottom:.5em;"/>
+              {% else %}
+              <img src='/media/Contacts/contact-default.png' style="height:80px; width: 80px; margin-top:.5em; margin-bottom:.5em;"/>
+              {% endif %}
+            </div>
+            <div style="margin-left:100px; text-align:left; font-size:small;">
+              <strong> Email</strong>  <a href="mailto:{{ contact.email }}">{{ contact.email }} </a>
+              <label> Telefono de Oficina:</label> {{ contact.office_phones }}
+              <label> Telefono de Oficina:</label> {{ contact.personal_phones }}
+              <label> Nota:</label>{{contact.description}}
+            </div>
+          </section>
+        </article>
+      {% endfor %}
+  {% else %}
+    {% if query %}
+      <p>No hay contactos.</p>
+    {% endif %}
+  {% endif %}
+{% endif %}
+</div>
+    <br><br><br>
+    <div style="clear:both;"></div>
+{% endblock %}
