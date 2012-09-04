@@ -327,7 +327,17 @@ footer li{
 }
 
 .tarjetaMedico{
+
   margin-bottom: 10px;
+  width: 400px;
+  float: left;
+  margin-right: 1em;
+
+}
+
+#listaMedicos{
+  margin: 0 auto 0 auto;
+  width: 830px;
 }
 
 .tarjetaMedico header{
@@ -342,6 +352,7 @@ footer li{
   border-width: 2px;
   border-bottom:none;
   border-color: #BEBEBE;
+
 }
 
 .tarjetaMedico section{
@@ -356,6 +367,7 @@ footer li{
   border-width: 2px;
   border-top:none;
   border-color: #BEBEBE;
+  min-height:120px;
 }
 
 .tarjetaMedico label{

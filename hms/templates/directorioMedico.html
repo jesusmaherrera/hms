@@ -20,6 +20,7 @@
   <br>
   <br>
 </article>
+<div id="listaMedicos">
 {% if doctores %}
   {% if query %}
       {% for doctor in doctores %}
@@ -28,9 +29,18 @@
             {{ doctor.first_name }} {{ doctor.last_name}} -  {{ doctor.specialty }}
           </header>
           <section>
-            <label>Email</label> {{ doctor.email }} 
-            <label>Telefono de Oficina:</label> {{ doctor.office_phones }}
-            <label>Nota:</label>{{doctor.description}}
+            <div style="float:left;">
+              {% if doctor.image %}
+              <img src='{{MEDIA_URL}}{{doctor.image}}' style="height:80px; width: 80px; margin-top:.5em; margin-bottom:.5em;"/>
+              {% else %}
+              <img src='/media/Contacts/doctor-default.png' style="height:80px; width: 80px; margin-top:.5em; margin-bottom:.5em;"/>
+              {% endif %}
+            </div>
+            <div style="margin-left:100px; text-align:left;">
+              <label>Email</label> {{ doctor.email }} 
+              <label>Telefono de Oficina:</label> {{ doctor.office_phones }}
+              <label>Nota:</label>{{doctor.description}}
+            </div>
           </section>
         </article>
       {% endfor %}
@@ -39,7 +49,8 @@
       <p>No hay Medicos.</p>
     {% endif %}
   {% endif %}
-{% endif%}
-
+{% endif %}
+</div>
     <br><br><br>
+    <div style="clear:both;"></div>
 {% endblock %}
