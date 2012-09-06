@@ -5,12 +5,17 @@
 
 {% endblock %}
 {% block contenido %}
+{% if user.username %}
+<div style="text-align:right; height:4em;">
+  <a class="btn btn-small btn-success" href="/NuevoContacto/"> <i class="icon-user icon-white"></i> Nuevo Contacto</a>
+</div>
+{% endif %}
 <article id="servicios" style="display: block;
       margin: 0 auto 0 auto; width:600px; ">
+  
   <header>
     <h1>Agenda</h1>
   </header>
-  
   <div id="searchBoxOne">
     <form action="/directorioContactos/" method="GET">
       <input type="text" placeholder="Especialidad, Nombre , Apellidos" style="width: 30em; height:2em; margin-bottom: 0;" name="query"/>
@@ -27,11 +32,14 @@
         <article class="tarjetaMedico">
           <header>
             {{ contact.first_name }} {{ contact.last_name}} -  {{ contact.specialty }}
+            <span class="">
+              <a href="{% url hms.main.views.nuevo_contacto contact.id %}" style=""><i class="icon-edit"></i></a>
+            </span>
           </header>
           <section>
             <div style="float:left;">
               {% if contact.image %}
-              <img src='{{MEDIA_URL}}{{contact.image}}' style="height:80px; width: 80px; margin-top:.5em; margin-bottom:.5em;"/>
+              <img src='{{MEDIA_URL}}{{ contact.image }}' style="height:80px; width: 80px; margin-top:.5em; margin-bottom:.5em;"/>
               {% else %}
               <img src='/media/Contacts/contact-default.png' style="height:80px; width: 80px; margin-top:.5em; margin-bottom:.5em;"/>
               {% endif %}
@@ -40,7 +48,7 @@
               <strong> Email</strong>  <a href="mailto:{{ contact.email }}">{{ contact.email }} </a>
               <label> Telefono de Oficina:</label> {{ contact.office_phones }}
               <label> Telefono de Oficina:</label> {{ contact.personal_phones }}
-              <label> Nota:</label>{{contact.description}}
+              <label> Nota:</label>{{contact.description}} 
             </div>
           </section>
         </article>

@@ -46,13 +46,18 @@
             <li><a href="/derechosEnfermeras/">Derechos de las Enfermeras</a></li>
           </ul>
         </li>
-        <li><a href="#" title="Reportes"><i class="icon-calendar icon-white"></i> Reportes&nbsp;<span class="flechabot"/></a>
+        {% if user.username %}
+        <li><a href="#" title="Reportes"><i class="icon-calendar icon-white"></i> Internamientos&nbsp;<span class="flechabot"/></a>
           <ul>
-            <li><a href="/internamientos/">Reporte de Internamientos</a></li>
+              <li><a href="/internamientosActuales/">Internamientos Actuales</a></li>
+              <li><a href="/internamientos/">Reporte de Internamientos</a></li>
+              <li><a href="/admin/main/internamiento/">Editar Internamientos</a></li>
           </ul>
         </li>
-        <li><a href="/admin/main/internamiento/">Internamientos</a></li>
-        <li><a href="/directorioContactos/?query=">Agenda</a></li>
+        <li><a href="/directorioContactos/?query="><i class="icon-user icon-white"></i> Agenda</a></li>
+        {% else %}
+        <li><a href="/internamientosActuales/" title="Reportes"><i class="icon-calendar icon-white"></i> Internamientos&nbsp;</a>
+        {% endif %}
       </ul>
     </nav>
     </div>

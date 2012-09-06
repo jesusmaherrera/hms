@@ -9,21 +9,37 @@
 	<h1>Iniciar Sesión</h1>
     <br>
 </header>
-<form id='formulario' action="/login/" method="post">{% csrf_token %}
-    {{ form.non_field_errors }}
+
+<form id='formulario' class="form-inline" action="/login/" method="post">{% csrf_token %}
+  {{ form.non_field_errors }}
+  {{ form.username.errors }}
+  {{ form.username }}
+ <!--  <input in="id_username" name="username" type="text"  placeholder="nombre de usuario"> -->
+
+   {{ form.password.errors }}
+  <!-- <input id="id_password" name="username" type="password" placeholder="Password"> -->
+  {{ form.password }}
+
+  <input class="btn" type="submit" value="Ingresar" />
+</form>
+<p style="color:red;">{{ message }}</p>
+
+<!-- <form id='formulario' >
+    
+  <label for="id_username" placeholder="Usuario">Usuario:</label>
     <div >
         {{ form.username.errors }}
         <label for="id_username" placeholder="Usuario">Usuario:</label>
         {{ form.username }}
     </div>
     <div >
-        {{ form.password.errors }}
-        <label for="id_password">Password:</label>
-        {{ form.password }}
+       
+   <label for="id_password">Password:</label>
+        
     </div>
-    <p style="color:red;">{{ message }}</p>
+    
     <br>
-    <input class="btn" type="submit" value="Ingresar" />
-</form>
+    
+</form> -->
 <br><br><br><br><br>	
 {% endblock %}

@@ -1,0 +1,41 @@
+﻿{% extends "base1.html" %}
+
+{% block titulo %}INTERNAMIENTOS{% endblock %}
+{% block style_css %}
+
+{% endblock %}
+{% block contenido %}
+<header>
+  <h1>Internamientos Actuales</h1>
+    <br>
+</header>
+  <table border="1" class="table table-bordered table-hover"  style="font-size:.7em;">
+    <thead>
+      <tr> 
+        <td>FOLIO</td>
+ 	      <td>PACIENTE</td>
+	      <td>CUARTO</td>
+	      <td>IGRESO</td>
+	      <td>DIAS</td>
+	      <td>MÉDICO</td>
+	      <td>DIAGNOSTICO</td>
+	      <td>TIPO</td>
+	      <td>INSTITUCIÓN</td>
+      </tr>
+    </thead>
+    {% for internamiento in intenamientosData %}
+      <tr>
+        <td>{{ internamiento.folio }}</td>
+	      <td>{{ internamiento.paciante }}</td>
+	      <td>{{ internamiento.Cuarto }}</td>
+    	  <td>{{ internamiento.dateTime }}</td>
+    	  <td>{{ internamiento.diasEstancia }}</td>
+    	  <td>{{ internamiento.medico }}</td>
+    	  <td>{{ internamiento.disease }}</td>
+    	  <td>{{ internamiento.patientType }}</td>
+    	  <td>{{ internamiento.institution }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+<br>
+{% endblock %}

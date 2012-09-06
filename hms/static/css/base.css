@@ -219,7 +219,7 @@ table.altrowstable {
  background-color:#c3dde0;
  }
 
-tr:nth-child(even) { background: #8387c7 }
+/*tr:nth-child(even) { background: #8387c7 }*/
 tr:nth-child(odd) { background: #fff}
 
 .contenido{
@@ -305,6 +305,8 @@ footer li{
 }
 
 /*##########################################################################formulario###############################################*/
+
+
 #searchBoxOne input.search {
     font-size: 16px;
     color: #999;

@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
-from hms.main.models import Paciente, Contact, Internamiento
-from hms.main.forms import ContactForm
+from hms.main.models import Paciente, Contact, Internamiento, ContactType
+from hms.main.forms import ContactForm, ContactFormT
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 
@@ -50,16 +50,40 @@ def nuevo_usuario(request):
          formulario = UserCreationForm()
     return render_to_response('nuevousuario.html',{'formulario':formulario},context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
+def nuevo_contacto(request, id = None):
+    if id:
+      ContactI = get_object_or_404(Contact, pk=id)
+    else:
+      ContactI = Contact()
 
-def nuevo_contacto(request):
     if request.method == 'POST':
-       formulario = ContactForm(request.POST)
+       formulario = ContactForm(request.POST, request.FILES, instance= ContactI)
        if formulario.is_valid():
           formulario.save()
-          return HttpResponseRedirect('/admin/main/contact/')
+          return render_to_response('agenda.html', context_instance=RequestContext(request))
     else:
-        formulario = ContactForm()
+        formulario = ContactForm(instance= ContactI)
     return render_to_response('contactoform.html',{'formulario':formulario},context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def nuevo_medico(request, id = None):
+    if id:
+      ContactI = get_object_or_404(Contact, pk=id)
+    else:
+      ContactI = Contact()
+
+    if request.method == 'POST':
+       formulario = ContactFormT(request.POST, request.FILES, instance= ContactI)
+       if formulario.is_valid():
+          CT = get_object_or_404(ContactType, pk = 1)
+          contactI =formulario.save(commit=False)
+          contactI.contact_type = CT
+          contactI.save()
+          return render_to_response('directorioMedico.html' , context_instance=RequestContext(request))
+    else:
+        formulario = ContactForm(instance= ContactI)
+    return render_to_response('medicoform.html',{'formulario':formulario},context_instance=RequestContext(request))
 
 def contacto(request):
     if request.method == 'POST':
@@ -129,6 +153,31 @@ def internamientos(request):
     return render_to_response('internamientos.html', {'fecha_actual':today,
                                                       'intenamientosData':intenamientosData,
                                                       })
+def internamientosActuales(request):
+    internamientos = Internamiento.objects.order_by('Cuarto').filter(
+        Q(fecha_egreso__gt=datetime.now()) | Q(fecha_egreso__isnull=True)
+    )
+
+    today = datetime.now() #fecha actual
+    f2 = today
+    intenamientosData = []
+    for internamiento in internamientos:
+        f1 = datetime(internamiento.dateTime.year, internamiento.dateTime.month, internamiento.dateTime.day)
+        diasEstancia = (datetime.now()- internamiento.dateTime).days
+        intenamientosData.append ({'folio': internamiento.folio,
+         'paciante': "%s %s %s" % (internamiento.paciente.apellido_paterno, internamiento.paciente.apellido_materno , internamiento.paciente.nombres),
+         'Cuarto': internamiento.Cuarto,
+         'dateTime': internamiento.dateTime,
+         'medico': internamiento.medico,
+         'disease': internamiento.disease,
+         'patientType': internamiento.patientType,
+         'institution': internamiento.institution,
+         'diasEstancia': str(f2.toordinal() - f1.toordinal()),                  
+                 })
+        
+    return render_to_response('internamientosActuales.html', {'fecha_actual':today,
+                                                      'intenamientosData':intenamientosData,
+                                                      }, context_instance=RequestContext(request))
 
 def subirDatos(request):
     doc = xlrd.open_workbook('/home/chunel/MEDICOS.xls')

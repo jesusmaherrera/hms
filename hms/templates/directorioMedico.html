@@ -5,12 +5,17 @@
 
 {% endblock %}
 {% block contenido %}
+{% if user.username %}
+<div style="text-align:right; height:4em;">
+  <a class="btn btn-small btn-success" href="/NuevoMedico/"> <i class="icon-user icon-white"></i> Nuevo Médico</a>
+</div>
+{% endif %}
 <article id="servicios" style="display: block;
       margin: 0 auto 0 auto; width:600px; ">
-  <header>
-    <h1>Directorio Medico</h1>
-  </header>
   
+  <header>
+    <h1>Directorio Médico</h1>
+  </header>
   <div id="searchBoxOne">
     <form action="/search/" method="GET">
       <input type="text" placeholder="Especialidad, Nombre de Medico, Apellidos de Medico " style="width: 30em; height:2em; margin-bottom: 0;" name="query"/>
@@ -26,7 +31,12 @@
       {% for doctor in doctores %}
         <article class="tarjetaMedico">
           <header>
-            {{ doctor.first_name }} {{ doctor.last_name}} -  {{ doctor.specialty }}
+            <span style="width:80%;">
+              {{ doctor.first_name }} {{ doctor.last_name}} -  {{ doctor.specialty }}
+            </span>
+            <span class="">
+              <a href="{% url hms.main.views.nuevo_medico doctor.id %}" style=""><i class="icon-edit"></i></a>
+            </span>
           </header>
           <section>
             <div style="float:left;">
@@ -39,7 +49,7 @@
             <div style="margin-left:100px; text-align:left;">
               <label>Email</label> {{ doctor.email }} 
               <label>Telefono de Oficina:</label> {{ doctor.office_phones }}
-              <label>Nota:</label>{{doctor.description}}
+              <label>Nota:</label>{{doctor.description}} 
             </div>
           </section>
         </article>

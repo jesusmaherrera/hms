@@ -1,8 +1,15 @@
 ﻿{% extends "base1.html" %}
 {% block titulo %}NUEVO USUARIO{% endblock %}
 {% block contenido %}
+ <header>
+    <h1>Nuevo Contacto</h1>
+ </header>
    <form id="formulario" method='post' action=''>{% csrf_token %}
-         <table>{{formulario}}</table>
-         <p><input type='submit' value='Registrar'/><p>
+   	{{ formulario.non_field_errors }}
+  	{{ formulario.contact_type.errors }}
+  	{{ formulario.contact_type }}
+         gfhgfhgfhgfhgfh
+         <table></table>
+         <p><input type='submit' class="btn" value='Guardar'/><p>
    </form>
 {% endblock %}

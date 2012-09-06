@@ -5,7 +5,10 @@ from hms.main.models import Contact
 
 class ContactForm(ModelForm):
     class Meta:
-          model = Contact
+        	model = Contact
 
-
+class ContactFormT(ModelForm):
+    class Meta:
+        	model = Contact
+        	exclude = ('contact_type',)
 
