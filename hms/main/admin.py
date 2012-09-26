@@ -2,7 +2,7 @@ from django.contrib import admin
 from hms.main.models import Contact, ContactType, Cuarto, Internamiento, Paciente
 
 class ContactAdmin(admin.ModelAdmin):
-    fields = ('first_name', 'last_name', 'contact_type', 'specialty', 'office_phones', 'home_phones', 'personal_phones', 'description', 'email', 'image')
+    fields = ('first_name', 'last_name', 'contact_type', 'specialty', 'office_phones', 'home_phones', 'personal_phones', 'description', 'email',)
     list_display = ('first_name', 'last_name', 'specialty','description','office_phones','home_phones','personal_phones','contact_type')
     search_fields = ('first_name', 'last_name','specialty','description')
 
