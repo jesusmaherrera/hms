@@ -172,6 +172,6 @@ LOGGING = {
 #configuraciones para enviar mensajes usando gmail
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'sistemashms@gmail.com'
+EMAIL_HOST_USER = 'comentarioshms@gmail.com'
 EMAIL_HOST_PASSWORD = 'hmsadmin2011'
 EMAIL_PORT = 587

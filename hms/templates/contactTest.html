@@ -1,0 +1,28 @@
+﻿{% extends "base1.html" %}
+
+{% block headScripts %}
+
+{% endblock %}
+
+{% block title %}MEDICA SIERRA{% endblock %}
+
+{% block content %}
+  <form method="post" action="">{% csrf_token %}
+    {{ emailForm.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ emailForm.subject.errors }}
+        <label for="id_subject">Tema:</label>
+        {{ emailForm.subject }}
+    </div>
+    <div class="fieldWrapper">
+        {{ emailForm.message.errors }}
+        <label for="id_message">Mensaje:</label>
+        {{ emailForm.message }}hjhgj
+    </div>
+      <br>
+      <input type="text" placeholder="Type something…"></input> 
+      <input class="btn" type="submit" value="Enviar y Salir" />
+    </form>
+<p>Hospital Medica Sierra, S.A. de C.V.{{ numero }}.</p>
+{% endblock %}
+

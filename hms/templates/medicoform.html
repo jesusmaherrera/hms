@@ -2,7 +2,7 @@
 {% block titulo %}CONTACTO{% endblock %}
 {% block contenido %}
 <header>
-	<h1>Nuevo Medico</h1>
+	<h1>Medico</h1>
 </header>
    <form id="formulario" class="form-horizontal" method='post' action=''>{% csrf_token %}
    	<br>
@@ -65,6 +65,11 @@
 		  	{{ formulario.personal_phones.errors }}
 		  	{{ formulario.personal_phones }}
 		</span>
+		<span class="span3">
+  			Publico
+		  	{{ formulario.public.errors }}
+		  	{{ formulario.public }}
+		 </span>
 		</fieldset>
   	</div>
   	<br>

@@ -2,15 +2,9 @@
 {% block titulo %}CONTACTO{% endblock %}
 {% block contenido %}
 <header>
-	<h1>Nuevo Contacto</h1>
+	<h1>Contacto</h1>
 </header>
-
-
-  
-
    <form id="formulario" class="form-horizontal" method='post' action=''>{% csrf_token %}
-
-
    	<br>
 
 	{{ formulario.non_field_errors }}
@@ -76,10 +70,19 @@
 		  	{{ formulario.personal_phones.errors }}
 		  	{{ formulario.personal_phones }}
 		</span>
+		<span class="span3">
+		  	Publico
+		  	{{ formulario.public.errors }}
+		  	{{ formulario.public }}
+		</span>
 		</fieldset>
   	</div>
   	<br>
-   	<p><input type='submit' class="btn btn-success" value='Guardar'/><p>
+  	<div class="form-actions">
+  		<button type="submit" class="btn btn-primary">Guardar</button>
+  		<button type="button" class="btn">Cancelar</button>
+	</div>
+   	<p>
    	<br>
    	<br>
    	<br>

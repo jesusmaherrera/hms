@@ -21,6 +21,14 @@
 {% endblock %}
 
 {% block contenido %}
+<div style="margin:0 auto 0 auto;">
+  {% if message != "" %}
+  <div class="alert fade in">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>{{ message }}!</strong> 
+  {% endif %}
+  </div>
+</div>
 <br>
 <div id="container" style='display: block; margin: auto;' >
     <div id="content">
@@ -40,5 +48,5 @@
 
   </div>
   <br>
-
+{{ emailForm }}
 {% endblock %}

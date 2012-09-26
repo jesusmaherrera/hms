@@ -4,7 +4,6 @@ from hms.main import views
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
-
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
@@ -14,6 +13,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^$', views.index),
+    (r'^SendEmail/$', views.send_email),
+    (r'^contact/$', views.contact),
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^internamientos/', views.internamientos),
     (r'^internamientosActuales/', views.internamientosActuales),

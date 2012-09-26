@@ -19,6 +19,7 @@ class Contact(models.Model):
     personal_phones = models.CharField('Telefono Personal', max_length=80,blank=True, null=True)
     specialty = models.CharField('Especialidad', max_length=100, blank=True, null=True)
     image = models.ImageField(upload_to='Contacts', verbose_name='Imagen', blank=True, null=True)
+    public = models.BooleanField(verbose_name="Publico")
     
     def __unicode__(self):
         return u'%s %s'% (self.first_name, self.last_name)
